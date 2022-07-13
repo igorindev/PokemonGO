@@ -38,7 +38,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 3460a78465742714c8bec5edb204b2a2
-    m_Address: Assets/Materials/m_Pokestop.mat
+    m_Address: PokestopMat
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

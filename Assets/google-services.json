@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "558319017609",
+    "firebase_url": "https://learnaddressables-default-rtdb.firebaseio.com",
+    "project_id": "learnaddressables",
+    "storage_bucket": "learnaddressables.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:558319017609:android:4a4edee707aa330fc5f058",
+        "android_client_info": {
+          "package_name": "com.DefaultCompany.PokemonGO"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "558319017609-it6u8r4koaf3mrte6ifn31c53v7t7h21.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmYtrOsBrv_gCEF8QqNS2R81BZTXWkV_U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "558319017609-it6u8r4koaf3mrte6ifn31c53v7t7h21.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
