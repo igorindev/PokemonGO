@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceLocations;
-//using Firebase.Storage;
 
 [Serializable]
 public struct PokestopsRef
@@ -133,19 +132,19 @@ public class World : MonoBehaviour
             obj.GetComponent<Pokestop>().spriteKey = spriteKey;
         }
 
-        AsyncOperationHandle<Material> handlerM = Addressables.LoadAssetAsync<Material>("PokestopMat");
-        yield return handlerM;
-        if (handlerM.Status == AsyncOperationStatus.Succeeded)
-        {
-            Material mat = handlerM.Result;
-            Renderer[] a = obj.GetComponentsInChildren<Renderer>();
-            for (int i = 0; i < a.Length; i++)
-            {
-                a[i].material = mat;
-            }
-        }
+       // AsyncOperationHandle<Material> handlerM = Addressables.LoadAssetAsync<Material>("PokestopMat");
+       // yield return handlerM;
+       // if (handlerM.Status == AsyncOperationStatus.Succeeded)
+       // {
+       //     Material mat = handlerM.Result;
+       //     Renderer[] a = obj.GetComponentsInChildren<Renderer>();
+       //     for (int i = 0; i < a.Length; i++)
+       //     {
+       //         a[i].material = mat;
+       //     }
+       // }
 
-        Addressables.Release(handler);
+        //Addressables.Release(handler);
         //Addressables.Release(handlerM);
     }
     public IEnumerator LoadAddressablesPokestopSprite(Pokestop ps, string key)
