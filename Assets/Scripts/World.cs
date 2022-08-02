@@ -105,23 +105,22 @@ public class World : MonoBehaviour
     }
     public IEnumerator LoadAddressablesPokemons(string key, Vector3 pos, int id)
     {
-        Debug.Log("KEY: " + key + " | Size: " + Addressables.GetDownloadSizeAsync(key).Result);
+        AsyncOperationHandle<long> ds = Addressables.GetDownloadSizeAsync(key);
+        yield return ds;
+        Debug.Log("KEY: " + key + " | Size: " + ds.Result);
 
         //Load a GameObject
-        AsyncOperationHandle<GameObject> handler = Addressables.LoadAssetAsync<GameObject>(key);
+        AsyncOperationHandle<GameObject> handler = Addressables.InstantiateAsync(key, pos, Quaternion.identity);
         yield return handler;
-        if (handler.Status == AsyncOperationStatus.Succeeded)
-        {
-            GameObject obj = Instantiate(handler.Result, pos, Quaternion.identity);
-            obj.GetComponent<Pokemon>().id = id;
-            pokemons[id].pokemon = obj;
-        }
-
-        Addressables.Release(handler);
+        pokemons[id].pokemon = handler.Result;
+        pokemons[id].pokemon.GetComponent<Pokemon>().id = id;
+        pokemons[id].pokemon.GetComponent<Pokemon>().handler = handler;
     }
     public IEnumerator LoadAddressablesPokestop(string key, Vector3 pos, string spriteKey)
     {
-        Debug.Log("KEY: " + key + " | Size: " + Addressables.GetDownloadSizeAsync(key).Result);
+        AsyncOperationHandle<long> ds = Addressables.GetDownloadSizeAsync(key);
+        yield return ds;
+        Debug.Log("KEY: " + key + " | Size: " + ds.Result);
         //Load a GameObject
         AsyncOperationHandle<GameObject> handler = Addressables.LoadAssetAsync<GameObject>(key);
         yield return handler;
@@ -131,25 +130,12 @@ public class World : MonoBehaviour
             obj = Instantiate(handler.Result, pos, Quaternion.identity);
             obj.GetComponent<Pokestop>().spriteKey = spriteKey;
         }
-
-       // AsyncOperationHandle<Material> handlerM = Addressables.LoadAssetAsync<Material>("PokestopMat");
-       // yield return handlerM;
-       // if (handlerM.Status == AsyncOperationStatus.Succeeded)
-       // {
-       //     Material mat = handlerM.Result;
-       //     Renderer[] a = obj.GetComponentsInChildren<Renderer>();
-       //     for (int i = 0; i < a.Length; i++)
-       //     {
-       //         a[i].material = mat;
-       //     }
-       // }
-
-        //Addressables.Release(handler);
-        //Addressables.Release(handlerM);
     }
     public IEnumerator LoadAddressablesPokestopSprite(Pokestop ps, string key)
     {
-        Debug.Log("KEY: " + key + " | Size: " + Addressables.GetDownloadSizeAsync(key).Result);
+        AsyncOperationHandle<long> ds = Addressables.GetDownloadSizeAsync(key);
+        yield return ds;
+        Debug.Log("KEY: " + key + " | Size: " + ds.Result);
 
         //Load a GameObject
         AsyncOperationHandle<Sprite> handler = Addressables.LoadAssetAsync<Sprite>(key);
@@ -160,5 +146,16 @@ public class World : MonoBehaviour
         }
 
         //Addressables.Release(handler);
+    }
+
+    [ContextMenu("Clear")]
+    public void Clear()
+    {
+        StartCoroutine(ClearC());
+    }
+    public IEnumerator ClearC()
+    {
+        yield return Resources.UnloadUnusedAssets();
+        Debug.LogWarning("Clear");
     }
 }

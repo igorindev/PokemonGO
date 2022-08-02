@@ -38,7 +38,7 @@ MonoBehaviour:
   m_RemoteCatalogLoadPath:
     m_Id: 3f7b4d04138d0e04eae441b1731e2ce1
   m_ContentStateBuildPath: 
-  m_BuildAddressablesWithPlayerBuild: 0
+  m_BuildAddressablesWithPlayerBuild: 2
   m_overridePlayerVersion: 
   m_GroupAssets:
   - {fileID: 11400000, guid: 65b3fddd4c0c49f42a2f624bf4f5935f, type: 2}
@@ -65,7 +65,7 @@ MonoBehaviour:
       - m_Id: 5500b29bf8e235f4faf7bcdf75b12e91
         m_Value: ServerData/[BuildTarget]
       - m_Id: 3f7b4d04138d0e04eae441b1731e2ce1
-        m_Value: gs://testbucketlearnpokemongo/[BuildTarget]
+        m_Value: https://storage.googleapis.com/testbucketlearnpokemongo/[BuildTarget]
     m_ProfileEntryNames:
     - m_Id: d32be2a566d39654e82250035165c967
       m_Name: BuildTarget
@@ -86,6 +86,7 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - Pokemon
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: a933e553506e53e4a9c90e60ff2caff4, type: 2}
