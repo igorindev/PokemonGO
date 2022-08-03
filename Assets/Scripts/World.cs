@@ -1,6 +1,7 @@
 using System.Collections;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceLocations;
@@ -34,6 +35,8 @@ public class World : MonoBehaviour
 {
     public static World instance;
 
+    public GameObject psShow;
+    public Image image;
     public float pokestopRange = 10;
     public float interactionRange = 3;
     public float despawnRange = 5;
@@ -62,7 +65,7 @@ public class World : MonoBehaviour
 
         for (int i = 0; i < pokestops.Length; i++)
         {
-            if ((playerTransform.position - pokestops[i].location).sqrMagnitude <= pokestopRange * pokestopRange)
+            //if ((playerTransform.position - pokestops[i].location).sqrMagnitude <= pokestopRange * pokestopRange)
             {
                 StartCoroutine(LoadAddressablesPokestop("Pokestop", pokestops[i].location, pokestops[i].key));
             }
@@ -103,6 +106,11 @@ public class World : MonoBehaviour
             }
         }
     }
+    public void OpenPokestop()
+    {
+        psShow.SetActive(true);
+    }
+
     public IEnumerator LoadAddressablesPokemons(string key, Vector3 pos, int id)
     {
         AsyncOperationHandle<long> ds = Addressables.GetDownloadSizeAsync(key);
@@ -124,13 +132,13 @@ public class World : MonoBehaviour
         //Load a GameObject
         AsyncOperationHandle<GameObject> handler = Addressables.LoadAssetAsync<GameObject>(key);
         yield return handler;
-        GameObject obj = null;
         if (handler.Status == AsyncOperationStatus.Succeeded)
         {
-            obj = Instantiate(handler.Result, pos, Quaternion.identity);
+            GameObject obj = Instantiate(handler.Result, pos, Quaternion.identity);
             obj.GetComponent<Pokestop>().spriteKey = spriteKey;
         }
     }
+    public AsyncOperationHandle<Sprite> currentOpenPokestop;
     public IEnumerator LoadAddressablesPokestopSprite(Pokestop ps, string key)
     {
         AsyncOperationHandle<long> ds = Addressables.GetDownloadSizeAsync(key);
@@ -142,10 +150,15 @@ public class World : MonoBehaviour
         yield return handler;
         if (handler.Status == AsyncOperationStatus.Succeeded)
         {
-            ps.spriteRenderer.sprite = handler.Result;
+            image.sprite = handler.Result;
         }
-
-        //Addressables.Release(handler);
+        currentOpenPokestop = handler;
+    }
+    public void ClosePokestop()
+    {
+        psShow.SetActive(false);
+        image.sprite = null;
+        Addressables.Release(currentOpenPokestop);
     }
 
     [ContextMenu("Clear")]

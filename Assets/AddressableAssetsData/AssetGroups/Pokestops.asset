@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Pokestops
+  m_EditorClassIdentifier: 
+  m_GroupName: Pokestops
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 22039516993a5054dacff8f95447f434
+  m_SerializeEntries:
+  - m_GUID: 724d3b66e6bd77542b383d78a8e9fc9b
+    m_Address: P4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d8b27889a11041246865f620df2ead58
+    m_Address: P3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 586cdec2cd693064d98763c569c587ae
+    m_Address: P2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dca50e6c505a3e24bb4df3e22d52f8bf
+    m_Address: P1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 8b4c387b2ea1a7b4c8619f91e5fc330a, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 46ff6e42562254a409771888cbcafa6e, type: 2}
+    - {fileID: 11400000, guid: cd90c0e0852ce144da63e17bbe0afa36, type: 2}

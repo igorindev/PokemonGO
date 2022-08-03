@@ -21,22 +21,6 @@ MonoBehaviour:
     m_Address: Pokestop
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: dca50e6c505a3e24bb4df3e22d52f8bf
-    m_Address: P1
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 586cdec2cd693064d98763c569c587ae
-    m_Address: P2
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: d8b27889a11041246865f620df2ead58
-    m_Address: P3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 724d3b66e6bd77542b383d78a8e9fc9b
-    m_Address: P4
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 3460a78465742714c8bec5edb204b2a2
     m_Address: PokestopMat
     m_ReadOnly: 0
